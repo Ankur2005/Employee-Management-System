@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { setLocalStorage } from '../../utils/localStorage'
 
-const Header = ({data}) => {
+const Header = ({changeUser,data}) => {
   // const [username,setUsername] = useState("");
   // if(!data)
   // {
@@ -11,7 +11,8 @@ const Header = ({data}) => {
   // setUsername(data.firstName);
   const logout = ()=>{
     localStorage.setItem('loggedInUser',"");
-    window.location.reload();
+    //window.location.reload();
+    changeUser("");
   }
   return (
     <div className='flex items-end justify-between'>
