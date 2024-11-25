@@ -11,7 +11,7 @@ const Header = ({changeUser,data}) => {
   // setUsername(data.firstName);
   const logout = ()=>{
     localStorage.setItem('loggedInUser',"");
-    //window.location.reload();
+    //window.location.reload(); 
     changeUser("");
   }
   return (

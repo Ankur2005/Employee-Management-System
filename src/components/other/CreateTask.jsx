@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { AuthContext } from '../../context/AuthProvider';
 
 const CreateTask = () => {
-  const [taskTitle,setTaskTitle] = useState("");
-  const [taskDescription, setTaskDescription] = useState("");
-  const [taskDate,setTaskDate] = useState("");
+  const [userData,setUserData] = useContext(AuthContext);
+
+
+  const [title,setTaskTitle] = useState("");
+  const [description, setTaskDescription] = useState("");
+  const [date,setTaskDate] = useState("");
   const [assignTo,setAssignTo] = useState("");
   const [category,setCategory] = useState("");
   
@@ -12,15 +16,30 @@ const CreateTask = () => {
 
   const submitHandler = (e)=>{
     e.preventDefault();
-    setNewTask({taskTitle,taskDescription,taskDate,category,assignTo,active:false,newTask:true,failed:false,completed:false});
-    const data = JSON.parse(localStorage.getItem('employees'));
-    data.forEach((e)=>{
-      if(assignTo == e.firstName){
-        e.tasks.push(newTask);
-      console.log(e);}
-      
-    })
-    localStorage.setItem("employees",JSON.stringify(data));
+    const task = {
+      title,
+      description,
+      date,
+      category,
+      active: false,
+      newTask: true,
+      failed: false,
+      completed: false,
+    };
+  
+    const data = userData.map((ele)=>{
+      if(assignTo==ele.firstName)
+      {
+        return {
+          ...ele,tasks:[...ele.tasks,task]
+        }
+      }
+      return ele;
+    });
+    setUserData(data)
+    console.log(data);
+    
+
     setTaskDate("");
     setTaskDescription("");
     setTaskTitle("");
@@ -33,14 +52,14 @@ const CreateTask = () => {
           <div className='w-1/2'>
             <div>
               <h3 className='text-sm text-gray-300 mb-0.5'>Task Title</h3>
-              <input value={taskTitle} onChange={(e)=>{
+              <input value={title} onChange={(e)=>{
                 setTaskTitle(e.target.value)
               }} className='text-black' type="text" placeholder='Do something' />
             </div>
             
             <div>
               <h3 className='text-sm text-gray-300 mb-0.5'>Date</h3>
-              <input value={taskDate} onChange={(e)=>{
+              <input value={date} onChange={(e)=>{
                 setTaskDate(e.target.value)
               }} className='text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px]' type="date" />
             </div>
@@ -59,7 +78,7 @@ const CreateTask = () => {
           </div>
           <div className='w-2/5 flex flex-col items-start'>
               <h3 className='text-sm text-gray-300 mb-0.5'>Description</h3>
-              <textarea value={taskDescription} onChange={(e)=>{
+              <textarea value={description} onChange={(e)=>{
                 setTaskDescription(e.target.value)
               }} className="w-full h-44 text-sm py-2 px-4 rounded outline-none bg-transparent border-[1px] border-gray-400" name=" " id=""></textarea>
               <button onClick={submitHandler} className='bg-emerald-500 py-3 hover:bg-emerald-600 px-5 rounded text-sm mt-4 w-full'>Create Task</button>

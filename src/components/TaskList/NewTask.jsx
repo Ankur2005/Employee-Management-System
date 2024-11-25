@@ -14,7 +14,7 @@ const NewTask = ({data}) => {
                 <button className='bg-red-500 py-1 px-2 text-sm'>Mark as failed</button>
             </div>
             <div className='mt-4'>
-                <button>Accept Task</button>
+                <button className='bg-gray-700 px-2 py-1 text-sm'>Accept Task</button>
             </div>
         </div>
     )
