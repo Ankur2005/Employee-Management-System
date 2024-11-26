@@ -10,9 +10,6 @@ const CreateTask = () => {
   const [date,setTaskDate] = useState("");
   const [assignTo,setAssignTo] = useState("");
   const [category,setCategory] = useState("");
-  
-  const [newTask,setNewTask] = useState({});
-
 
   const submitHandler = (e)=>{
     e.preventDefault();
@@ -35,9 +32,10 @@ const CreateTask = () => {
         }
       }
       return ele;
-    });
+    })
     setUserData(data)
-    console.log(data);
+    
+    localStorage.setItem('employees',JSON.stringify(data));
     
 
     setTaskDate("");

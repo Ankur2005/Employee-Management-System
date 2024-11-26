@@ -4,13 +4,12 @@ import Login from './components/Auth/Login'
 import EmployeeDash from './components/Dashboard/EmployeeDash'
 import AdminDash from './components/Dashboard/AdminDash'
 import { AuthContext } from './context/AuthProvider'
-import { setLocalStorage } from './utils/localStorage'
 
 const App = () => {
   const [user, setUser] = useState(null);
-  const [loggenInUserData, setLoggedInUserData] = useState(null);
-  const [userData,setUserData] = useContext(AuthContext);
-
+  const [loggedInUserData, setLoggedInUserData] = useState(null);
+  const [userData,setUserData,adminData,setAdminData] = useContext(AuthContext);
+  
   useEffect(()=>{
     const loggedInUser = localStorage.getItem('loggedInUser');
     if(loggedInUser)
@@ -20,14 +19,22 @@ const App = () => {
       setLoggedInUserData(userData.data);
     }
   },[])
+  const handleLogin = (email, password, role) => {
 
-  const handleLogin = (email, password) => {
-
-    if (email == "admin@me.com" && password == "123") {
-      setUser("admin");
-      localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
+    // if (email == "admin@me.com" && password == "123") {
+    //   setUser("admin");
+    //   localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
+    // }
+    if(role=="admin")
+    {
+      const adminBhai = adminData.find((e)=>e.email == email && e.password == password);
+      if(adminBhai){
+        setUser("admin");
+        setLoggedInUserData(adminBhai);
+        localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" ,data:adminBhai}));
+      }
     }
-    else if (userData) {
+    else if (userData && role=="employee") {
       const employee = userData.find((e) => e.email == email && e.password == password);
       if (employee) {
         setUser("employee");
@@ -45,7 +52,7 @@ const App = () => {
         !user ? <Login handleLogin={handleLogin} /> : ""
       }
       {
-        user == "admin" ? <AdminDash changeUser={setUser} data={loggenInUserData} /> : user == "employee" ? <EmployeeDash changeUser={setUser} data={loggenInUserData}/> : null
+        user == "admin" ? <AdminDash changeUser={setUser} data={loggedInUserData} /> : user == "employee" ? <EmployeeDash changeUser={setUser} data={loggedInUserData}/> : null
       }
     </>
   )
