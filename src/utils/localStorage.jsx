@@ -1,3 +1,4 @@
+localStorage.clear();
 const employees = [
     {
         "id": 1,
@@ -56,7 +57,7 @@ const employees = [
                 "category": "HR",
                 "active": true,
                 "newTask": false,
-                "completed": true,
+                "completed": false,
                 "failed": false
             },
             {
@@ -65,7 +66,7 @@ const employees = [
                 "date": "2024-11-22",
                 "category": "Logistics",
                 "active": true,
-                "newTask": true,
+                "newTask": false,
                 "completed": false,
                 "failed": false
             }

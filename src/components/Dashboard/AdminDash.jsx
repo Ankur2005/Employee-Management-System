@@ -5,7 +5,7 @@ import AllTask from '../other/AllTask'
 
 const AdminDash = ({changeUser,data}) => {
   return (
-    <div className='h-screen w-full p-7'>
+    <div className='h-full w-full'>
       <Header changeUser={changeUser} data={data} />
       <CreateTask data={data}/>
       <AllTask data={data}/>

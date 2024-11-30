@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const Login = ({ handleLogin }) => {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
-    const [role,setRole] = useState("");
+    const [role, setRole] = useState("");
     const submitHandler = (e) => {
         e.preventDefault();
         handleLogin(email, pass, role);
@@ -12,52 +12,42 @@ const Login = ({ handleLogin }) => {
         setRole("");
     }
     return (
-        <div className='flex h-screen w-screen items-center justify-center'>
-            <div className='border-2 rounded-xl border-emerald-600 p-20'>
-                <form className='flex flex-col items-center justify-center' onSubmit={submitHandler}>
-                    <input value={email} onChange={(e) => {
-                        setEmail(e.target.value);
-                    }} required className='outline-none bg-transparent border-2 border-emerald-600 text-xl py-3 px-5 rounded-full placeholder:text-gray-400' type="email" placeholder='Enter your email' />
-                    <input value={pass} onChange={(e) => {
-                        setPass(e.target.value);
-                    }} required className='outline-none bg-transparent border-2 border-emerald-600 text-xl py-3 px-5 rounded-full placeholder:text-gray-400' type="password" placeholder='Enter your password' />
-                    <div className="relative w-full">
-                        <select placeholder="Select the role"
-                            className="appearance-none outline-none bg-transparent border-2 border-emerald-600 text-xl py-3 px-5 rounded-full text-gray-400 focus:border-emerald-700 w-full cursor-pointer"
-                            value={role}
-                            onChange={(e)=>{
-                                setRole(e.target.value);
-                            }}
-                        >   
-                        <option className="bg-gray-800 text-white hover:bg-emerald-100" value="" disabled>
-                                Select the Role
-                            </option>
-                            <option className="bg-gray-800 text-white hover:bg-emerald-100" value="admin">
-                                Admin
-                            </option>
-                            <option className="bg-gray-800 text-white hover:bg-emerald-100" value="employee">
-                                Employee
-                            </option>
-                        </select>
-                        <div className="absolute inset-y-0 right-0 flex items-center pr-5 pointer-events-none">
-                            <svg
-                                className="w-5 h-5 text-gray-400"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M19 9l-7 7-7-7"
-                                />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <button className='mt-5 text-white outline-none border-none bg-emerald-600 text-xl py-3 px-5 rounded-full placeholder:text-white'>Login</button>
+        <div className='flex h-screen w-screen items-center justify-center bg-gradient-to-r from-gray-200 via-gray-400 to-gray-600'>
+            <div className='bg-white p-10 rounded-xl shadow-lg'>
+                <h2 className='text-2xl font-bold mb-5 text-center text-gray-700'>Login</h2>
+                <form className='flex flex-col items-center' onSubmit={submitHandler}>
+                    <input 
+                        value={email} 
+                        onChange={(e) => setEmail(e.target.value)} 
+                        required 
+                        className='outline-none bg-gray-100 border-2 border-gray-300 text-lg py-2 px-4 rounded-lg mb-4 w-full placeholder-gray-500 text-gray-700' 
+                        type="email" 
+                        placeholder='Enter your email' 
+                    />
+                    <input 
+                        value={pass} 
+                        onChange={(e) => setPass(e.target.value)} 
+                        required 
+                        className='outline-none bg-gray-100 border-2 border-gray-300 text-lg py-2 px-4 rounded-lg mb-4 w-full placeholder-gray-500 text-gray-700' 
+                        type="password" 
+                        placeholder='Enter your password' 
+                    />
+                    <select 
+                        value={role} 
+                        onChange={(e) => setRole(e.target.value)} 
+                        required 
+                        className='outline-none bg-gray-100 border-2 border-gray-300 text-lg py-2 px-4 rounded-lg mb-4 w-full text-gray-700'
+                    >
+                        <option value="" disabled className='text-gray-500'>Select your role</option>
+                        <option value="admin" className='text-gray-700'>Admin</option>
+                        <option value="employee" className='text-gray-700'>Employee</option>
+                    </select>
+                    <button 
+                        type="submit" 
+                        className='bg-emerald-600 text-white text-lg py-2 px-6 rounded-lg hover:bg-emerald-700 transition duration-300 w-full'
+                    >
+                        Login
+                    </button>
                 </form>
             </div>
         </div>

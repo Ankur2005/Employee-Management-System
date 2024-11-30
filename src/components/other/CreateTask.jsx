@@ -45,45 +45,61 @@ const CreateTask = () => {
     setCategory("");
   }
   return (
-    <div className='p-5 bg-[#1c1c1c] mt-7 rounded'>
-        <form className='flex flex-wrap w-full items-start justify-between'>
-          <div className='w-1/2'>
-            <div>
-              <h3 className='text-sm text-gray-300 mb-0.5'>Task Title</h3>
-              <input value={title} onChange={(e)=>{
-                setTaskTitle(e.target.value)
-              }} className='text-black' type="text" placeholder='Do something' />
-            </div>
-            
-            <div>
-              <h3 className='text-sm text-gray-300 mb-0.5'>Date</h3>
-              <input value={date} onChange={(e)=>{
-                setTaskDate(e.target.value)
-              }} className='text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px]' type="date" />
-            </div>
-            <div>
-              <h3 className='text-sm text-gray-300 mb-0.5'>Assign to</h3>
-              <input value={assignTo} onChange={(e)=>{
-                setAssignTo(e.target.value)
-              }} className='text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px]' type="text" placeholder='employee Name' />
-            </div>
-            <div>
-              <h3 className='text-sm text-gray-300 mb-0.5'>Category</h3>
-              <input value={category} onChange={(e)=>{
-                setCategory(e.target.value)
-              }} className='text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px]' type="text" placeholder='design,dev' />
-            </div>
-          </div>
-          <div className='w-2/5 flex flex-col items-start'>
-              <h3 className='text-sm text-gray-300 mb-0.5'>Description</h3>
-              <textarea value={description} onChange={(e)=>{
-                setTaskDescription(e.target.value)
-              }} className="w-full h-44 text-sm py-2 px-4 rounded outline-none bg-transparent border-[1px] border-gray-400" name=" " id=""></textarea>
-              <button onClick={submitHandler} className='bg-emerald-500 py-3 hover:bg-emerald-600 px-5 rounded text-sm mt-4 w-full'>Create Task</button>
-            </div>
-          
+    <div className='flex h-screen w-screen items-center justify-center bg-gradient-to-r from-gray-200 via-gray-400 to-gray-600 '>
+      <div className='bg-white p-10 rounded-xl shadow-lg w-full max-w-md'>
+        <h2 className='text-2xl font-bold mb-5 text-center text-gray-700'>Create Task</h2>
+        <form className='flex flex-col' onSubmit={submitHandler}>
+          <input
+            value={title}
+            onChange={(e) => setTaskTitle(e.target.value)}
+            required
+            className='outline-none bg-gray-100 border-2 border-gray-300 text-lg py-2 px-4 rounded-lg mb-4 placeholder-gray-500 text-gray-700'
+            type="text"
+            placeholder='Task Title'
+          />
+          <textarea
+            value={description}
+            onChange={(e) => setTaskDescription(e.target.value)}
+            required
+            className='outline-none bg-gray-100 border-2 border-gray-300 text-lg py-2 px-4 rounded-lg mb-4 placeholder-gray-500 text-gray-700'
+            placeholder='Task Description'
+            rows="4"
+          />
+          <input
+            value={date}
+            onChange={(e) => setTaskDate(e.target.value)}
+            required
+            className='outline-none bg-gray-100 border-2 border-gray-300 text-lg py-2 px-4 rounded-lg mb-4 placeholder-gray-500 text-gray-700'
+            type="date"
+          />
+          <input
+            value={assignTo}
+            onChange={(e) => setAssignTo(e.target.value)}
+            required
+            className='outline-none bg-gray-100 border-2 border-gray-300 text-lg py-2 px-4 rounded-lg mb-4 placeholder-gray-500 text-gray-700'
+            type="text"
+            placeholder='Assign To'
+          />
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            required
+            className='outline-none bg-gray-100 border-2 border-gray-300 text-lg py-2 px-4 rounded-lg mb-4 text-gray-700'
+          >
+            <option value="" disabled>Select Category</option>
+            <option value="work">Work</option>
+            <option value="personal">Personal</option>
+            <option value="other">Other</option>
+          </select>
+          <button
+            type="submit"
+            className='bg-emerald-600 text-white text-lg py-2 px-6 rounded-lg hover:bg-emerald-700 transition duration-300'
+          >
+            Create Task
+          </button>
         </form>
       </div>
+    </div>
   )
 }
 
