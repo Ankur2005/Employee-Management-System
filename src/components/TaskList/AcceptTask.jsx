@@ -1,8 +1,8 @@
 import React from 'react'
 
-const AcceptTask = ({data}) => {
+const AcceptTask = ({ data }) => {
     return (
-        <div className='flex-shrink-0 h-full w-[300px] p-5 bg-gradient-to-r from-blue-400 via-teal-400 to-green-400 rounded-xl shadow-lg'>
+        <div className='flex-shrink-0 h-full w-[300px] p-5 bg-blue-500 rounded-xl shadow-lg'>
             <div className='flex justify-between items-center'>
                 <h3 className='bg-red-600 text-sm px-3 py-1 rounded text-white font-bold'>{data.category}</h3>
                 <h4 className='text-sm text-white italic'>{data.date}</h4>

@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
     const { employees, admin } = getLocalStorage();
     setUserData(employees);
     setAdminData(admin);
-  }, []);
+}, []);
 
   return (
     <div>

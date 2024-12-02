@@ -1,10 +1,11 @@
 import React from 'react'
 
-const NewTask = ({data}) => {
+const NewTask = ({ data }) => {
+    console.log(data)
     return (
-        <div className='flex-shrink-0 h-full w-[300px] p-5 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 rounded-xl shadow-lg'>
+        <div className='flex-shrink-0 h-full w-[300px] p-5 bg-blue-500 rounded-xl shadow-lg'>
             <div className='flex justify-between items-center'>
-                <h3 className='bg-red-600 text-sm px-3 py-1 rounded text-white font-bold'>{data.category}</h3>
+                <h3 className='bg-blue-700 text-sm px-3 py-1 rounded text-white font-bold'>{data.category}</h3>
                 <h4 className='text-sm text-white italic'>{data.date}</h4>
             </div>
             <h2 className='mt-5 text-2xl font-semibold text-white'>{data.title}</h2>
@@ -14,7 +15,7 @@ const NewTask = ({data}) => {
                 <button className='bg-red-500 py-2 px-4 text-sm rounded-full shadow-lg hover:bg-red-600 transition duration-300 font-semibold text-white'>Mark as failed</button>
             </div>
             <div className='mt-4'>
-                <button className='w-full bg-gray-700 py-2 text-sm rounded-full shadow-lg hover:bg-gray-800 transition duration-300 font-semibold text-white'>Accept Task</button>
+                <button className='w-full bg-blue-700 py-2 text-sm rounded-full shadow-lg hover:bg-blue-800 transition duration-300 font-semibold text-white'>Accept Task</button>
             </div>
         </div>
     )
