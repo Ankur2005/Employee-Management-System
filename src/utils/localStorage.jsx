@@ -7,40 +7,20 @@ const employees = [
         "password": "123",
         "tasks": [
             {
-                "title": "Prepare monthly report",
-                "description": "Compile data for the monthly financial report.",
-                "date": "2024-11-20",
-                "category": "Finance",
-                "active": true,
-                "newTask": true,
-                "completed": false,
-                "failed": false
-            },
-            {
-                "title": "Team meeting",
-                "description": "Discuss Q4 targets with the team.",
-                "date": "2024-11-21",
-                "category": "Management",
-                "active": false,
-                "newTask": false,
-                "completed": true,
-                "failed": false
-            },
-            {
                 "title": "Review project proposals",
                 "description": "Provide feedback on new project proposals.",
                 "date": "2024-11-23",
                 "category": "Operations",
-                "active": true,
+                "active": false,
                 "newTask": true,
                 "completed": false,
                 "failed": false
             }
         ],
         "taskNumbers": {
-            "active": 2,
-            "newTask": 2,
-            "completed": 1,
+            "active": 0,
+            "newTask": 0,
+            "completed": 0,
             "failed": 0
         }
     },
@@ -72,9 +52,9 @@ const employees = [
             }
         ],
         "taskNumbers": {
-            "active": 2,
-            "newTask": 1,
-            "completed": 1,
+            "active": 0,
+            "newTask": 0,
+            "completed": 0,
             "failed": 0
         }
     },
@@ -116,9 +96,9 @@ const employees = [
             }
         ],
         "taskNumbers": {
-            "active": 2,
-            "newTask": 2,
-            "completed": 1,
+            "active": 0,
+            "newTask": 0,
+            "completed": 0,
             "failed": 0
         }
     },
@@ -233,11 +213,16 @@ const admin = [
 ];
 
 export const setLocalStorage = () => {
-    localStorage.setItem('employees',JSON.stringify(employees));
-    localStorage.setItem('admin',JSON.stringify(admin));
-}
+    if (!localStorage.getItem('employees')) {
+        localStorage.setItem('employees', JSON.stringify(employees));
+    }
+    if (!localStorage.getItem('admin')) {
+        localStorage.setItem('admin', JSON.stringify(admin));
+    }
+};
+
 export const getLocalStorage = () => {
     const employees = JSON.parse(localStorage.getItem('employees'));
     const admin = JSON.parse(localStorage.getItem('admin'));
-    return {employees,admin};
-}
+    return { employees, admin };
+};

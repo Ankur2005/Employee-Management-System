@@ -1,7 +1,6 @@
 import React from 'react'
 
 const NewTask = ({ data }) => {
-    console.log(data)
     return (
         <div className='flex-shrink-0 h-full w-[300px] p-5 bg-blue-500 rounded-xl shadow-lg'>
             <div className='flex justify-between items-center'>

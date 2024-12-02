@@ -3,7 +3,6 @@ import { AuthContext } from '../../context/AuthProvider';
 
 const TaskListNumbers = ({data}) => {
     const [userData, setUserData] = useContext(AuthContext)
-
     const taskNumbers = useMemo(() => {
         const counts = { active: 0, newTask: 0, completed: 0, failed: 0 }
         data.tasks.forEach((task) => {
@@ -15,9 +14,9 @@ const TaskListNumbers = ({data}) => {
         return counts
     }, [data.tasks])
 
-    useEffect(() => {
-        setUserData({ ...data, taskNumbers })
-    }, [data, taskNumbers, setUserData])
+    // useEffect(() => {
+    //     setUserData({ ...data, taskNumbers })
+    // }, [data, taskNumbers, setUserData])
 
   return (
     <div className='flex mt-10 justify-between gap-5 screen'>
