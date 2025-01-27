@@ -42,7 +42,7 @@ const CreateTask = () => {
   };
 
   return (
-    <div className='flex h-screen w-screen items-center justify-center bg-gradient-to-r from-gray-200 via-gray-400 to-gray-600'>
+    <div className='flex h-screen w-full items-center justify-center bg-gradient-to-r from-gray-200 via-gray-400 to-gray-600'>
       <div className='bg-white p-10 rounded-xl shadow-lg w-full max-w-md max-h-[90vh] overflow-auto'>
         <h2 className='text-2xl font-bold mb-5 text-center text-gray-700'>Create Task</h2>
         <form className='flex flex-col' onSubmit={submitHandler}>
