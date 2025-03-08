@@ -14,9 +14,9 @@ const TaskListNumbers = ({data}) => {
         return counts
     }, [data.tasks])
 
-    // useEffect(() => {
-    //     setUserData({ ...data, taskNumbers })
-    // }, [data, taskNumbers, setUserData])
+    useEffect(() => {
+        setUserData({ ...data, taskNumbers })
+    }, [data, taskNumbers, setUserData])
 
   return (
     <div className='flex mt-10 justify-between gap-5 screen'>
